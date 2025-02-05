@@ -11,5 +11,11 @@ config_version=5
 [application]
 
 config/name="Space Shooter V2"
+run/main_scene="res://starter/starter.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+ScenesManager="*res://singletons/scenes_manager.gd"
+AudioManager="*res://singletons/audio_manager.gd"
