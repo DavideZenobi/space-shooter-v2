@@ -1,0 +1,21 @@
+NOTAS DEL PROYECTO
+- Rotación del sprite
+	Para el método de look_at es necesario rotar los sprites para que estén
+	mirando a la derecha. Digamos que el punto 0,0 de look_at es hacia la derecha.
+	Por lo tanto, el resto de componentes como la barra de vida, también 
+	tienen que tener en cuenta esto.
+
+- Añadir la textura al sprite en tiempo de ejecucion.
+	La textura se añade cuando se crea el enemigo. La razón de esto es que los 
+	enemigos tienen dificultades y por lo tanto, diferentes estadísticas y 
+	diferente color(textura). Existe una escena por cada tipo de enemigo, pero no
+	por cada dificultad, ya que el gameplay es el mismo, solo cambian datos 
+	como la vida, daño, etc etc y el color(textura).
+	Si se hiciese una escena también por cada dificultad, no haría falta añadir
+	la textura en el código.
+
+- REMEMBER: El GameManager que yo tengo en realidad es un LevelManager y no deberia ser 
+un nodo mas dentro del arbol general, si no que es un script y va al nodo raiz,
+que siempre sera un level + el numero del nivel (level1, level2, etc).
+
+IDEAS PARA EL FUTURO

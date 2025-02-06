@@ -4,7 +4,7 @@ class_name Enums
 enum Entities {
 	PLAYER,
 	ENEMY,
-	NPC
+	BULLETS,
 }
 
 ## ---------------------##
@@ -12,6 +12,8 @@ enum Entities {
 ## ---------------------##
 
 enum Levels {
+	STARTER,
+	HOME_MENU,
 	LEVEL_1,
 	LEVEL_2,
 	LEVEL_3,
