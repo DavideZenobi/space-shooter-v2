@@ -14,12 +14,14 @@ enum Entities {
 enum Levels {
 	STARTER,
 	HOME_MENU,
+	LEVEL, ## Experimental
 	LEVEL_1,
 	LEVEL_2,
 	LEVEL_3,
 	LEVEL_4,
 }
 
+## Experimental, not being used
 enum LevelPhases {
 	COUNTDOWN,
 	ONGOING,
@@ -63,6 +65,10 @@ enum Enemies {
 	TRACKER,
 	TANK,
 	BOMBARDIER,
+}
+
+enum EnemyBullets {
+	BASIC,
 }
 
 enum EnemyBehaviour {

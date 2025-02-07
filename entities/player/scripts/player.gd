@@ -6,11 +6,13 @@ signal ammo_changed;
 @export var max_health: int = 100;
 @export var speed: int = 800;
 @export var current_bullet: Enums.PlayerBullets;
-@export var fire_rate: float = 0.1;
+@export var fire_rate: float = 0.08;
 @export var max_ammo: int = 30;
 
 var time_since_last_shoot: float = 0.0;
 var current_ammo: int;
+
+var state: Enums.PlayerStates = Enums.PlayerStates.NORMAL;
 
 var screen_size: Vector2;
 
@@ -19,6 +21,7 @@ var screen_size: Vector2;
 @onready var reload: Timer = $Reload;
 
 func _ready() -> void:
+	PlayerReference.set_player(self);
 	look_at(Vector2.UP);
 	screen_size = get_viewport_rect().size;
 	current_ammo = max_ammo;
@@ -34,6 +37,9 @@ func _physics_process(delta) -> void:
 	move_and_slide();
 	
 	## Dash TODO
+	if Input.is_action_just_pressed("dash"):
+		
+		pass;
 	
 	## Screen limits
 	position.x = clamp(position.x, 0 + 50, screen_size.x - 50);
@@ -75,3 +81,7 @@ func _reload_ammo() -> void:
 	if current_ammo == max_ammo:
 		reload.stop();
 	ammo_changed.emit();
+
+
+func _on_invincible_timeout():
+	state = Enums.PlayerStates.NORMAL;

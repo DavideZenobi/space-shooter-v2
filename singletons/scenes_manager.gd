@@ -21,6 +21,12 @@ func _ready() -> void:
 func get_player_bullet_scene(player_bullet_type: Enums.PlayerBullets) -> PackedScene:
 	return player_bullets_scenes[player_bullet_type];
 
+func get_enemy_scene(enemy_type: Enums.Enemies) -> PackedScene:
+	return enemies_scenes[enemy_type];
+
+func get_enemy_bullet(enemy_bullet: Enums.EnemyBullets) -> void:
+	pass;
+
 func preload_scenes() -> void:
 	Logger.print_log("Loading scenes...");
 	

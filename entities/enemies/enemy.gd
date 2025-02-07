@@ -1,11 +1,26 @@
+class_name Enemy;
 extends Node2D
 
+var type: Enums.Enemies;
+var behaviour: Enums.EnemyBehaviour;
+var state: Enums.EnemyStates;
+var target_point: Vector2;
+var direction: Vector2;
+var speed: int;
+var times_hitted: int;
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func initialize(new_behaviour: Enums.EnemyBehaviour):
+	behaviour = new_behaviour;
+	state = Enums.EnemyStates.IDLE;
+	speed = 1000;
+	times_hitted = 0;
 
+func set_target_point(new_target_point: Vector2):
+	target_point = new_target_point;
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func change_state(new_state: Enums.EnemyStates) -> void:
+	state = new_state;
+
+func hitted():
+	## TODO
+	pass;

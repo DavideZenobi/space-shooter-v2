@@ -4,7 +4,7 @@ func _ready():
 	Logger.print_log("Home menu ready");
 
 func _on_play_pressed():
-	ScenesManager.change_scene(Enums.Levels.LEVEL_1);
+	ScenesManager.change_scene(Enums.Levels.LEVEL);
 
 
 func _on_options_pressed():

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvclnbm374rxj"]
+
+[ext_resource type="Curve2D" uid="uid://eyan07hvxs7f" path="res://common/pathings/random_spawn_rectangle.tres" id="1_7aib8"]
+
+[node name="Path" type="Path2D"]
+curve = ExtResource("1_7aib8")
