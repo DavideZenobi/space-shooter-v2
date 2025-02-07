@@ -48,3 +48,5 @@ wait_time = 0.05
 
 [connection signal="timeout" from="Sprite2D/BlinkInterval" to="Sprite2D" method="_alternate_blink_effect"]
 [connection signal="timeout" from="Sprite2D/BlinkDuration" to="Sprite2D" method="_stop_blink_effect"]
+[connection signal="timeout" from="ReloadCooldown" to="." method="_start_reloading"]
+[connection signal="timeout" from="Reload" to="." method="_reload_ammo"]

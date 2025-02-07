@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cdbgn7p6dofta"]
+[gd_scene load_steps=4 format=3 uid="uid://cdbgn7p6dofta"]
 
 [ext_resource type="Script" path="res://levels/home_menu/home_menu.gd" id="1_glvye"]
 [ext_resource type="PackedScene" uid="uid://32g37gejm625" path="res://common/backgrounds/background.tscn" id="2_wt7yw"]
+[ext_resource type="PackedScene" uid="uid://bh471bqsqqser" path="res://common/camera/camera.tscn" id="3_gmhxh"]
 
 [node name="HomeMenu" type="Control"]
 layout_mode = 3
@@ -36,6 +37,11 @@ layout_mode = 2
 text = "Play
 "
 
+[node name="Controls" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Controls
+"
+
 [node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Options
@@ -45,6 +51,8 @@ text = "Options
 layout_mode = 2
 text = "Exit
 "
+
+[node name="Camera" parent="." instance=ExtResource("3_gmhxh")]
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]

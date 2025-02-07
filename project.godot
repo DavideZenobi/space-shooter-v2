@@ -22,6 +22,15 @@ AudioManager="*res://singletons/audio_manager.gd"
 TransitionScreen="*res://common/transition/transition_screen.tscn"
 Config="*res://singletons/config.gd"
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+
+[dotnet]
+
+project/assembly_name="Space Shooter V2"
+
 [input]
 
 move_left={
