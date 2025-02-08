@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://d4ktm51ps3yom"]
 
-[ext_resource type="Script" path="res://systems/level_intro_countdown_ui/level_intro_countdown_ui.gd" id="1_20888"]
+[ext_resource type="Script" path="res://ui/level_intro_countdown_ui/level_intro_countdown_ui.gd" id="1_20888"]
 
 [node name="LevelIntroCountdownUi" type="Control"]
 layout_mode = 3

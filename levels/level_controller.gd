@@ -21,6 +21,7 @@ func change_state(new_state: Enums.LevelPhases):
 ## Intro countdown finished
 func _on_intro_countdown_finished():
 	change_state(Enums.LevelPhases.ONGOING);
+	start();
 
 ## Fade in from transition screen, starter point
 func _on_fade_in_finished():

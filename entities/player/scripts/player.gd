@@ -73,6 +73,10 @@ func get_movement_input() -> Vector2:
 	direction = direction.normalized();
 	return direction;
 
+func _hitted(attack: Attack) -> void:
+	if state == Enums.PlayerStates.INVINCIBLE:
+		return;
+
 func _start_reloading() -> void:
 	reload.start();
 
@@ -83,5 +87,5 @@ func _reload_ammo() -> void:
 	ammo_changed.emit();
 
 
-func _on_invincible_timeout():
+func _on_invincible_timeout() -> void:
 	state = Enums.PlayerStates.NORMAL;

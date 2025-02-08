@@ -26,7 +26,7 @@ func spawn_enemy():
 	get_tree().root.add_child(enemy_instance);
 	enemy_instance.add_to_group("enemies");
 	enemy_instance.global_position = spawn_position;
-	
+	print("hola")
 
 func _on_spawn_timeout():
 	spawn_enemy();
