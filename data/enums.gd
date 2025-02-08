@@ -23,9 +23,9 @@ enum Levels {
 
 ## Experimental, not being used
 enum LevelPhases {
-	COUNTDOWN,
+	INTRO,
 	ONGOING,
-	WAVE,
+	TRANSITION,
 	BOSS,
 }
 

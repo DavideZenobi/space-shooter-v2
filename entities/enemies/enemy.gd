@@ -9,13 +9,13 @@ var direction: Vector2;
 var speed: int;
 var times_hitted: int;
 
-func initialize(new_behaviour: Enums.EnemyBehaviour):
+func initialize(new_behaviour: Enums.EnemyBehaviour) -> void:
 	behaviour = new_behaviour;
 	state = Enums.EnemyStates.IDLE;
 	speed = 1000;
 	times_hitted = 0;
 
-func set_target_point(new_target_point: Vector2):
+func set_target_point(new_target_point: Vector2) -> void:
 	target_point = new_target_point;
 
 func change_state(new_state: Enums.EnemyStates) -> void:

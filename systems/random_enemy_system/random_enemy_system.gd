@@ -1,8 +1,6 @@
 class_name RandomEnemySystem
 extends Node
 
-## const RANDOM_SPAWN_RECTANGLE: Curve2D = load("res://common/pathings/random_spawn_rectangle.tres");
-
 var enemy_number_per_spawn: int = 1;
 
 @onready var spawn: Timer = $Spawn;
@@ -10,6 +8,9 @@ var enemy_number_per_spawn: int = 1;
 
 func initialize():
 	spawn.start();
+
+func stop():
+	spawn.stop();
 
 func set_data():
 	
@@ -23,8 +24,8 @@ func spawn_enemy():
 	enemy_instance.initialize(Enums.EnemyBehaviour.SOLO);
 	enemy_instance.set_target_point(target_point);
 	get_tree().root.add_child(enemy_instance);
+	enemy_instance.add_to_group("enemies");
 	enemy_instance.global_position = spawn_position;
-	print("Hello");
 	
 
 func _on_spawn_timeout():

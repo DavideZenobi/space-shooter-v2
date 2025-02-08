@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r8fht"]
 size = Vector2(72, 84)
 
-[node name="Tracker" type="Node2D"]
+[node name="Tracker" type="Node2D" groups=["enemies"]]
 script = ExtResource("1_oolgb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
