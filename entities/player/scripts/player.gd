@@ -2,12 +2,16 @@ class_name Player
 extends CharacterBody2D
 
 signal ammo_changed;
+signal player_died;
+signal player_hitted;
 
-@export var max_health: int = 100;
+@export var max_health: int = 50;
 @export var speed: int = 800;
 @export var current_bullet: Enums.PlayerBullets;
 @export var fire_rate: float = 0.08;
 @export var max_ammo: int = 30;
+
+var current_health: int;
 
 var time_since_last_shoot: float = 0.0;
 var current_ammo: int;
@@ -19,12 +23,14 @@ var screen_size: Vector2;
 @onready var bullet_manager: Marker2D = $BulletManager;
 @onready var reload_cooldown: Timer = $ReloadCooldown;
 @onready var reload: Timer = $Reload;
+@onready var invincible: Timer = $Invincible;
 
 func _ready() -> void:
 	PlayerReference.set_player(self);
 	look_at(Vector2.UP);
 	screen_size = get_viewport_rect().size;
 	current_ammo = max_ammo;
+	current_health = max_health;
 
 func _physics_process(delta) -> void:
 	## Look at / rotation
@@ -53,7 +59,14 @@ func _physics_process(delta) -> void:
 		time_since_last_shoot = clamp(time_since_last_shoot - delta, 0, fire_rate);
 
 func shoot() -> void:
-	bullet_manager.spawn_bullet(current_bullet, position, rotation);
+	## Bullet spawn
+	var bullet_instance = BulletFactory.create_player_bullet(current_bullet);
+	bullet_instance.initialize(current_bullet);
+	get_tree().root.add_child(bullet_instance);
+	bullet_instance.global_position = position;
+	bullet_instance.rotation = rotation;
+	
+	## Ammo stuff
 	time_since_last_shoot = fire_rate;
 	current_ammo -= 1;
 	reload_cooldown.start();
@@ -73,9 +86,26 @@ func get_movement_input() -> Vector2:
 	direction = direction.normalized();
 	return direction;
 
-func _hitted(attack: Attack) -> void:
+func hitted(attack: Attack) -> void:
 	if state == Enums.PlayerStates.INVINCIBLE:
 		return;
+	
+	damage(attack.damage);
+	player_hitted.emit();
+	state = Enums.PlayerStates.INVINCIBLE;
+	invincible.start();
+
+func damage(amount: int) -> void:
+	current_health += amount;
+	print(current_health);
+	if current_health <= 0:
+		player_died.emit();
+		queue_free();
+
+func heal(amount: int) -> void:
+	current_health += amount;
+	if current_health > max_health:
+		current_health = max_health;
 
 func _start_reloading() -> void:
 	reload.start();

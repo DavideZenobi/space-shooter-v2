@@ -1,21 +1,60 @@
-[gd_scene load_steps=4 format=3 uid="uid://lm7psim6hc31"]
+[gd_scene load_steps=7 format=3 uid="uid://lm7psim6hc31"]
 
 [ext_resource type="Texture2D" uid="uid://ctcu82aejj2jh" path="res://entities/bullets/player/basic/sprites/basic_blue_01.png" id="1_4ebix"]
-[ext_resource type="Script" path="res://entities/bullets/bullet.gd" id="1_g6hc1"]
+[ext_resource type="Script" path="res://entities/bullets/player/player_bullet.gd" id="1_jdvaf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2bb65"]
 size = Vector2(52, 8)
 
+[sub_resource type="Animation" id="Animation_2rpgv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cp4wf"]
+resource_name = "fade_out"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_03lit"]
+_data = {
+"RESET": SubResource("Animation_2rpgv"),
+"fade_out": SubResource("Animation_cp4wf")
+}
+
 [node name="Basic" type="Node2D"]
-script = ExtResource("1_g6hc1")
+script = ExtResource("1_jdvaf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708
 texture = ExtResource("1_4ebix")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_2bb65")
 
@@ -23,4 +62,15 @@ shape = SubResource("RectangleShape2D_2bb65")
 position = Vector2(1, 2.38419e-07)
 scale = Vector2(2.6, 0.4)
 
+[node name="FadeOut" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
+
+[node name="FadeOutAnim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_03lit")
+}
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]
+[connection signal="timeout" from="FadeOut" to="." method="_on_fade_out_timeout"]

@@ -30,3 +30,14 @@ func _physics_process(delta) -> void:
 			
 		Enums.EnemyBehaviour.PATROL:
 			pass;
+
+func shoot():
+	var bullet_instance = BulletFactory.create_enemy_bullet(current_bullet);
+	bullet_instance.initialize(current_bullet);
+	get_tree().root.add_child(bullet_instance);
+	bullet_instance.global_position = position;
+	bullet_instance.rotation = rotation;
+
+
+func _on_shoot_cooldown_timeout() -> void:
+	shoot();

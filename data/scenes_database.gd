@@ -19,5 +19,5 @@ static var enemies: Dictionary = {
 }
 
 static var enemy_bullets: Dictionary = {
-	
+	Enums.EnemyBullets.BASIC: "res://entities/bullets/enemy/basic/basic.tscn",
 }

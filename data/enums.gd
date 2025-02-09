@@ -90,3 +90,8 @@ enum EnemyDifficulties {
 	MEDIUM,
 	HARD,
 }
+
+enum BulletStates {
+	FREE,
+	HITTED,
+}

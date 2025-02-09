@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://d2ykcsrmeno5t"]
+[gd_scene load_steps=6 format=3 uid="uid://d2ykcsrmeno5t"]
 
 [ext_resource type="Script" path="res://entities/player/scripts/player.gd" id="1_rwrbl"]
 [ext_resource type="Texture2D" uid="uid://byyy3e3hs6ygu" path="res://entities/player/sprites/playerShip1_blue.png" id="2_6ycr7"]
 [ext_resource type="Script" path="res://entities/player/scripts/style_controller.gd" id="3_tw6pg"]
-[ext_resource type="Script" path="res://entities/player/scripts/bullet_manager.gd" id="4_xhs2e"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8kmbh"]
 radius = 37.0
@@ -32,13 +31,13 @@ one_shot = true
 shape = SubResource("CapsuleShape2D_8kmbh")
 
 [node name="Hitbox" type="Area2D" parent="."]
+collision_mask = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CapsuleShape2D_ax0qx")
 
 [node name="BulletManager" type="Marker2D" parent="."]
 position = Vector2(38, 0)
-script = ExtResource("4_xhs2e")
 
 [node name="ReloadCooldown" type="Timer" parent="."]
 one_shot = true
@@ -49,6 +48,7 @@ wait_time = 0.05
 [node name="Invincible" type="Timer" parent="."]
 one_shot = true
 
+[connection signal="player_hitted" from="." to="Sprite2D" method="_on_taken_damage"]
 [connection signal="timeout" from="Sprite2D/BlinkInterval" to="Sprite2D" method="_alternate_blink_effect"]
 [connection signal="timeout" from="Sprite2D/BlinkDuration" to="Sprite2D" method="_stop_blink_effect"]
 [connection signal="timeout" from="ReloadCooldown" to="." method="_start_reloading"]

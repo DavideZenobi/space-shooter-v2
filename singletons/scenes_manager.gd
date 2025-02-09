@@ -24,8 +24,8 @@ func get_player_bullet_scene(player_bullet_type: Enums.PlayerBullets) -> PackedS
 func get_enemy_scene(enemy_type: Enums.Enemies) -> PackedScene:
 	return enemies_scenes[enemy_type];
 
-func get_enemy_bullet(enemy_bullet: Enums.EnemyBullets) -> void:
-	pass;
+func get_enemy_bullet(enemy_bullet: Enums.EnemyBullets) -> PackedScene:
+	return enemies_bullets_scenes[enemy_bullet];
 
 func preload_scenes() -> void:
 	Logger.print_log("Loading scenes...");
@@ -44,6 +44,10 @@ func preload_scenes() -> void:
 	## Enemies scenes load
 	for enemy in ScenesDatabase.enemies.keys():
 		enemies_scenes[enemy] = load(ScenesDatabase.enemies[enemy])
+	
+	## Enemy bullets scenes load
+	for enemy_bullet in ScenesDatabase.enemy_bullets.keys():
+		enemies_bullets_scenes[enemy_bullet] = load(ScenesDatabase.enemy_bullets[enemy_bullet]);
 	
 	scene_loading_finished.emit();
 

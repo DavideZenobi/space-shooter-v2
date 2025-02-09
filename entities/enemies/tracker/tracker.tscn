@@ -17,6 +17,8 @@ rotation = -1.5708
 texture = ExtResource("2_2nolo")
 
 [node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("RectangleShape2D_r8fht")
@@ -25,15 +27,17 @@ shape = SubResource("RectangleShape2D_r8fht")
 position = Vector2(37, 0)
 
 [node name="ShootCooldown" type="Timer" parent="."]
-wait_time = 3.0
 
 [node name="LifeBar" type="TextureProgressBar" parent="."]
-offset_left = -16.0
-offset_top = -55.0
-offset_right = 80.0
-offset_bottom = -39.0
+visible = false
+offset_left = 50.0
+offset_top = -27.0
+offset_right = 146.0
+offset_bottom = -11.0
 rotation = 1.5708
-scale = Vector2(0.4, 0.3)
+scale = Vector2(0.6, 0.45)
 value = 100.0
 texture_under = ExtResource("4_bjpgh")
 texture_progress = ExtResource("5_75wsc")
+
+[connection signal="timeout" from="ShootCooldown" to="." method="_on_shoot_cooldown_timeout"]

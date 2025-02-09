@@ -4,7 +4,6 @@ extends Sprite2D
 @onready var blink_duration: Timer = $BlinkDuration;
 
 func _on_taken_damage():
-	print("hey")
 	blink_duration.start();
 	blink_interval.start();
 	modulate = Color.INDIAN_RED;

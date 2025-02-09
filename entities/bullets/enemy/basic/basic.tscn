@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwu4yp41qa6jb"]
+
+[ext_resource type="Texture2D" uid="uid://7ej7fbqj1cej" path="res://entities/bullets/enemy/basic/sprites/laserRed01.png" id="1_p8idd"]
+[ext_resource type="Script" path="res://entities/bullets/enemy/enemy_bullet.gd" id="1_r0c76"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_edbrh"]
+size = Vector2(52, 8)
+
+[node name="Basic" type="Node2D"]
+script = ExtResource("1_r0c76")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("1_p8idd")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_edbrh")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, 2.38419e-07)
+scale = Vector2(2.6, 0.4)
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]
