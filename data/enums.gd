@@ -80,6 +80,7 @@ enum EnemyStates {
 	IDLE,
 	MOVING_TO_TARGET,
 	TRACKING,
+	CHASING,
 	ATTACKING,
 	PATROLLING,
 }
@@ -94,4 +95,9 @@ enum EnemyDifficulties {
 enum BulletStates {
 	FREE,
 	HITTED,
+}
+
+enum DamageTypes {
+	BULLET,
+	BODY,
 }

@@ -1,9 +1,11 @@
 class_name Tracker
 extends Enemy
 
+@onready var bullet_spawn: Marker2D = $BulletSpawn;
 @onready var shoot_cooldown: Timer = $ShootCooldown;
 
 func _ready():
+	super._ready();
 	state = Enums.EnemyStates.MOVING_TO_TARGET;
 
 func _physics_process(delta) -> void:
@@ -35,9 +37,8 @@ func shoot():
 	var bullet_instance = BulletFactory.create_enemy_bullet(current_bullet);
 	bullet_instance.initialize(current_bullet);
 	get_tree().root.add_child(bullet_instance);
-	bullet_instance.global_position = position;
+	bullet_instance.global_position = bullet_spawn.global_position;
 	bullet_instance.rotation = rotation;
-
 
 func _on_shoot_cooldown_timeout() -> void:
 	shoot();

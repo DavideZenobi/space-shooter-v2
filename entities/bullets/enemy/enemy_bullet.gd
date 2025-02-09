@@ -30,6 +30,7 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 	
 	var attack = Attack.new();
 	attack.damage = self.damage;
+	attack.damage_type = Enums.DamageTypes.BULLET;
 	area.get_parent().hitted(attack);
 	
 	has_collided = true;
