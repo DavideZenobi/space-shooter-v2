@@ -1,6 +1,9 @@
 class_name Health
 extends Node
 
+signal enemy_health_changed;
+signal enemy_died;
+
 var max_health: int;
 var current_health: int;
 

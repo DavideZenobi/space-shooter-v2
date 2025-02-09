@@ -1,14 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://d4nslq5eekaqf"]
+[gd_scene load_steps=6 format=3 uid="uid://d4nslq5eekaqf"]
 
 [ext_resource type="Script" path="res://entities/enemies/tracker/tracker.gd" id="1_oolgb"]
 [ext_resource type="Texture2D" uid="uid://ba4odnamqrlfl" path="res://entities/enemies/tracker/sprites/tracker_red.png" id="2_2nolo"]
-[ext_resource type="PackedScene" uid="uid://cwd3s5rbedhci" path="res://common/health/health.tscn" id="3_ea7cg"]
+[ext_resource type="Texture2D" uid="uid://511vx3bw3gdv" path="res://entities/enemies/ui_sprites/empty_bar.png" id="4_bjpgh"]
+[ext_resource type="Texture2D" uid="uid://bjs5flgups364" path="res://entities/enemies/ui_sprites/green_bar.png" id="5_75wsc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r8fht"]
 size = Vector2(72, 84)
 
 [node name="Tracker" type="Node2D" groups=["enemies"]]
 script = ExtResource("1_oolgb")
+max_health = 30
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = -1.5708
@@ -25,4 +27,13 @@ position = Vector2(37, 0)
 [node name="ShootCooldown" type="Timer" parent="."]
 wait_time = 3.0
 
-[node name="Health" parent="." instance=ExtResource("3_ea7cg")]
+[node name="LifeBar" type="TextureProgressBar" parent="."]
+offset_left = -16.0
+offset_top = -55.0
+offset_right = 80.0
+offset_bottom = -39.0
+rotation = 1.5708
+scale = Vector2(0.4, 0.3)
+value = 100.0
+texture_under = ExtResource("4_bjpgh")
+texture_progress = ExtResource("5_75wsc")

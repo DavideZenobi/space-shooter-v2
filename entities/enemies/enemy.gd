@@ -15,7 +15,7 @@ var speed: int;
 var times_hitted: int;
 
 @onready var sprite: Sprite2D = $Sprite2D;
-@onready var health_component: Health = $Health;
+@onready var life_bar: TextureProgressBar = $LifeBar;
 
 func initialize(new_behaviour: Enums.EnemyBehaviour) -> void:
 	behaviour = new_behaviour;
@@ -23,6 +23,8 @@ func initialize(new_behaviour: Enums.EnemyBehaviour) -> void:
 	state = Enums.EnemyStates.IDLE;
 	speed = 1000;
 	times_hitted = 0;
+	print(life_bar);
+	life_bar.value = 100;
 
 func set_target_point(new_target_point: Vector2) -> void:
 	target_point = new_target_point;
@@ -31,5 +33,13 @@ func change_state(new_state: Enums.EnemyStates) -> void:
 	state = new_state;
 
 func hitted(attack: Attack):
-	## TODO
-	pass;
+	update_health(attack.damage);
+	update_life_bar();
+
+func update_health(amount: int):
+	current_health += amount;
+
+func update_life_bar():
+	life_bar.value = current_health * 100 / max_health;
+	if life_bar.value <= 30:
+		life_bar.texture_progress = load("res://entities/enemies/ui_sprites/red_bar.png");
