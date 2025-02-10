@@ -61,7 +61,7 @@ enum PlayerEvents {
 ## ---------------------##
 
 enum Enemies {
-	LIGHTWEIGHT,
+	#LIGHTWEIGHT,
 	TRACKER,
 	TANK,
 	BOMBARDIER,
@@ -69,6 +69,9 @@ enum Enemies {
 
 enum EnemyBullets {
 	BASIC,
+	BOMB,
+	MINI_BOMB,
+	
 }
 
 enum EnemyBehaviour {
@@ -82,6 +85,7 @@ enum EnemyStates {
 	TRACKING,
 	CHASING,
 	ATTACKING,
+	EXPLODING,
 	PATROLLING,
 }
 
@@ -100,4 +104,8 @@ enum BulletStates {
 enum DamageTypes {
 	BULLET,
 	BODY,
+}
+
+enum EnemyDeathEffects {
+	EXPLOSION1,
 }

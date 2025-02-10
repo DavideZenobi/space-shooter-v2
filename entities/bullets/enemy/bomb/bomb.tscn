@@ -1,0 +1,82 @@
+[gd_scene load_steps=11 format=3 uid="uid://x3htdmec06c1"]
+
+[ext_resource type="Texture2D" uid="uid://goe3cwp2uarf" path="res://entities/bullets/enemy/mini_bomb/sprites/Bullet Pixel 8x8 part 1 A.png" id="1_3g8p3"]
+[ext_resource type="Script" path="res://entities/bullets/enemy/bomb/bomb.gd" id="1_ncx14"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dumtr"]
+atlas = ExtResource("1_3g8p3")
+region = Rect2(224, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5hanj"]
+atlas = ExtResource("1_3g8p3")
+region = Rect2(240, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8c1vg"]
+atlas = ExtResource("1_3g8p3")
+region = Rect2(256, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_052ks"]
+atlas = ExtResource("1_3g8p3")
+region = Rect2(272, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7yo8d"]
+atlas = ExtResource("1_3g8p3")
+region = Rect2(288, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ni4fv"]
+atlas = ExtResource("1_3g8p3")
+region = Rect2(304, 128, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c37uo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dumtr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5hanj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8c1vg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_052ks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7yo8d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ni4fv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vo5te"]
+size = Vector2(28, 26)
+
+[node name="Bomb" type="Node2D"]
+script = ExtResource("1_ncx14")
+damage = -30
+speed = 300
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_c37uo")
+frame = 5
+frame_progress = 0.825324
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_vo5te")
+
+[node name="Explode" type="Timer" parent="."]
+wait_time = 2.5
+one_shot = true
+autostart = true
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="timeout" from="Explode" to="." method="_on_explode_timeout"]

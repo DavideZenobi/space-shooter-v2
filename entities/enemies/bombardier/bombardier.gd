@@ -1,4 +1,4 @@
-class_name Tracker
+class_name Bombardier
 extends Enemy
 
 @onready var bullet_spawn: Marker2D = $BulletSpawn;
@@ -35,7 +35,6 @@ func shoot():
 	var bullet_instance = BulletFactory.create_enemy_bullet(current_bullet);
 	get_tree().root.add_child(bullet_instance);
 	bullet_instance.global_position = bullet_spawn.global_position;
-	bullet_instance.rotation = rotation;
 
-func _on_shoot_cooldown_timeout() -> void:
+func _on_shoot_cooldown_timeout():
 	shoot();

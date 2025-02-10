@@ -1,0 +1,60 @@
+[gd_scene load_steps=14 format=3 uid="uid://bys1f1t6fjbf7"]
+
+[ext_resource type="Texture2D" uid="uid://llyc05t046or" path="res://effects/explosion_effect/sprites/96x96 - ClusterExplosionFrame1.png" id="1_gr3fb"]
+[ext_resource type="Texture2D" uid="uid://c6ehsntkbx6g3" path="res://effects/explosion_effect/sprites/96x96 - ClusterExplosionFrame2.png" id="2_nhgbe"]
+[ext_resource type="Texture2D" uid="uid://dq34ofjt4hd3" path="res://effects/explosion_effect/sprites/96x96 - ClusterExplosionFrame3.png" id="3_x3ypl"]
+[ext_resource type="Texture2D" uid="uid://bv5bmrx3mc8o0" path="res://effects/explosion_effect/sprites/96x96 - ClusterExplosionFrame4.png" id="4_espah"]
+[ext_resource type="Texture2D" uid="uid://l7wp5j6hw2pw" path="res://effects/explosion_effect/sprites/96x96 - ClusterExplosionFrame5.png" id="5_4nkfi"]
+[ext_resource type="Texture2D" uid="uid://cq14oe8kxne4p" path="res://effects/explosion_effect/sprites/96x96 - ClusterExplosionFrame6.png" id="6_y35so"]
+[ext_resource type="Texture2D" uid="uid://dtcm8i5ekjqeh" path="res://effects/explosion_effect/sprites/96x96 - ClusterExplosionFrame7.png" id="7_4md6c"]
+[ext_resource type="Texture2D" uid="uid://dd42upu38875d" path="res://effects/explosion_effect/sprites/96x96 - ClusterExplosionFrame8.png" id="8_4644f"]
+[ext_resource type="Texture2D" uid="uid://b752hoscxrf3s" path="res://effects/explosion_effect/sprites/96x96 - ClusterExplosionFrame9.png" id="9_o2cos"]
+[ext_resource type="Texture2D" uid="uid://dnawmnmtm2gh8" path="res://effects/explosion_effect/sprites/96x96 - ClusterExplosionFrame10.png" id="10_nfwx7"]
+[ext_resource type="Texture2D" uid="uid://cdmubf7k2jmsn" path="res://effects/explosion_effect/sprites/96x96 - ClusterExplosionFrame11.png" id="11_6hse5"]
+[ext_resource type="Script" path="res://effects/explosion_effect/explosion_effect.gd" id="12_t05bv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h8uo8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_gr3fb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_nhgbe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_x3ypl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_espah")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4nkfi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_y35so")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_4md6c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_4644f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_o2cos")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_nfwx7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_6hse5")
+}],
+"loop": false,
+"name": &"explosion1",
+"speed": 15.0
+}]
+
+[node name="ExplosionEffect" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_h8uo8")
+animation = &"explosion1"
+script = ExtResource("12_t05bv")

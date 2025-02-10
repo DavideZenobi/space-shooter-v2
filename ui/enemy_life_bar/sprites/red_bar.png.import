@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b3u6vx86vn1xh"
-path="res://.godot/imported/red_bar.png-bf75e8bcec22716cb3c5e1f85f283081.ctex"
+path="res://.godot/imported/red_bar.png-5baf97b04287cc32f341dca02bdb2253.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/enemies/ui_sprites/red_bar.png"
-dest_files=["res://.godot/imported/red_bar.png-bf75e8bcec22716cb3c5e1f85f283081.ctex"]
+source_file="res://ui/enemy_life_bar/sprites/red_bar.png"
+dest_files=["res://.godot/imported/red_bar.png-5baf97b04287cc32f341dca02bdb2253.ctex"]
 
 [params]
 

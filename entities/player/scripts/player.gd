@@ -97,7 +97,6 @@ func hitted(attack: Attack) -> void:
 
 func damage(amount: int) -> void:
 	current_health += amount;
-	print(current_health);
 	if current_health <= 0:
 		player_died.emit();
 		queue_free();

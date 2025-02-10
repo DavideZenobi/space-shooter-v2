@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjs5flgups364"
-path="res://.godot/imported/green_bar.png-147f5a8360d00ff92555a71418f4be0f.ctex"
+uid="uid://cdmubf7k2jmsn"
+path="res://.godot/imported/96x96 - ClusterExplosionFrame11.png-15410a707ec6ea65941a2fa3845fadf5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/enemies/ui_sprites/green_bar.png"
-dest_files=["res://.godot/imported/green_bar.png-147f5a8360d00ff92555a71418f4be0f.ctex"]
+source_file="res://effects/explosion_effect/sprites/96x96 - ClusterExplosionFrame11.png"
+dest_files=["res://.godot/imported/96x96 - ClusterExplosionFrame11.png-15410a707ec6ea65941a2fa3845fadf5.ctex"]
 
 [params]
 

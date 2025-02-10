@@ -1,3 +1,34 @@
-[gd_scene format=3 uid="uid://blmylfxh2ahwd"]
+[gd_scene load_steps=5 format=3 uid="uid://blmylfxh2ahwd"]
+
+[ext_resource type="Texture2D" uid="uid://k5gbed0lfa6x" path="res://entities/enemies/bombardier/sprites/enemyBlack5.png" id="1_1d1tf"]
+[ext_resource type="Script" path="res://entities/enemies/bombardier/bombardier.gd" id="1_ktokq"]
+[ext_resource type="PackedScene" uid="uid://bbvht4ewqmtyv" path="res://ui/enemy_life_bar/enemy_life_bar.tscn" id="3_fevey"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pytc4"]
+size = Vector2(80, 84)
 
 [node name="Bombardier" type="Node2D"]
+script = ExtResource("1_ktokq")
+max_health = 50
+body_damage = 10
+current_bullet = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -1.5708
+texture = ExtResource("1_1d1tf")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_pytc4")
+
+[node name="BulletSpawn" type="Marker2D" parent="."]
+position = Vector2(46, 0)
+
+[node name="ShootCooldown" type="Timer" parent="."]
+
+[node name="EnemyLifeBar" parent="." instance=ExtResource("3_fevey")]
+
+[connection signal="timeout" from="ShootCooldown" to="." method="_on_shoot_cooldown_timeout"]

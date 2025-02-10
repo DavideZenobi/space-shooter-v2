@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dcd04smbhd1hu"]
+[gd_scene load_steps=5 format=3 uid="uid://dcd04smbhd1hu"]
 
 [ext_resource type="Script" path="res://entities/enemies/tank/tank.gd" id="1_i10d2"]
 [ext_resource type="Texture2D" uid="uid://b7v25rm0ko4f1" path="res://entities/enemies/tank/sprites/enemyRed4.png" id="2_6cn41"]
+[ext_resource type="PackedScene" uid="uid://bbvht4ewqmtyv" path="res://ui/enemy_life_bar/enemy_life_bar.tscn" id="3_4epbg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8cn7f"]
 size = Vector2(72, 76)
@@ -9,7 +10,7 @@ size = Vector2(72, 76)
 [node name="Tank" type="Node2D"]
 script = ExtResource("1_i10d2")
 chasing_speed = 400
-max_health = 150
+max_health = 80
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = -1.5708
@@ -23,6 +24,8 @@ collision_mask = 3
 position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_8cn7f")
 
-[node name="LifeBar" type="TextureProgressBar" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="EnemyLifeBar" parent="." instance=ExtResource("3_4epbg")]
+offset_left = 45.0
+offset_top = 27.0
+offset_right = 141.0
+offset_bottom = 43.0

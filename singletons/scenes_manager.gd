@@ -8,6 +8,7 @@ var player_scene: PackedScene;
 var player_bullets_scenes: Dictionary;
 var enemies_scenes: Dictionary;
 var enemies_bullets_scenes: Dictionary;
+var enemy_death_effect: PackedScene;
 
 var previous_scene: Enums.Levels;
 var current_scene: Enums.Levels;
@@ -48,6 +49,9 @@ func preload_scenes() -> void:
 	## Enemy bullets scenes load
 	for enemy_bullet in ScenesDatabase.enemy_bullets.keys():
 		enemies_bullets_scenes[enemy_bullet] = load(ScenesDatabase.enemy_bullets[enemy_bullet]);
+	
+	## Enemy death effect
+	enemy_death_effect = load(ScenesDatabase.enemy_death_effect);
 	
 	scene_loading_finished.emit();
 

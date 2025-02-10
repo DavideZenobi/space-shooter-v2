@@ -6,10 +6,11 @@ signal enemy_died;
 @export var max_health: int;
 @export var body_damage: int;
 @export var speed: int;
+@export var current_bullet: Enums.EnemyBullets;
 
 var current_health: int;
 var type: Enums.Enemies;
-var current_bullet: Enums.EnemyBullets;
+
 var behaviour: Enums.EnemyBehaviour; ## SOLO OR PATROL
 var state: Enums.EnemyStates;
 var target_point: Vector2;
@@ -17,7 +18,7 @@ var direction: Vector2;
 var times_hitted: int;
 
 @onready var sprite: Sprite2D = $Sprite2D;
-@onready var life_bar: TextureProgressBar = $LifeBar;
+@onready var life_bar: TextureProgressBar = $EnemyLifeBar;
 @onready var hitbox: Area2D = $Hitbox;
 
 func _ready() -> void:
@@ -43,7 +44,14 @@ func hitted(attack: Attack) -> void:
 func update_health(amount: int) -> void:
 	current_health += amount;
 	if current_health <= 0:
-		queue_free();
+		on_die();
+
+func on_die() -> void:
+	queue_free();
+	var enemy_death_effect_scene = ScenesManager.enemy_death_effect;
+	var enemy_death_effect_instance = enemy_death_effect_scene.instantiate();
+	get_tree().root.add_child(enemy_death_effect_instance);
+	enemy_death_effect_instance.global_position = position;
 
 func _on_hitbox_body_entered(body: Player) -> void:
 	var attack = Attack.new();
@@ -54,4 +62,4 @@ func _on_hitbox_body_entered(body: Player) -> void:
 func update_life_bar():
 	life_bar.value = current_health * 100 / max_health;
 	if life_bar.value <= 30:
-		life_bar.texture_progress = load("res://entities/enemies/ui_sprites/red_bar.png");
+		life_bar.texture_progress = load("res://ui/enemy_life_bar/sprites/red_bar.png");

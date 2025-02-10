@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://511vx3bw3gdv"
-path="res://.godot/imported/empty_bar.png-fa98da5821a4cb002fd138818e8ff0ff.ctex"
+uid="uid://dtcm8i5ekjqeh"
+path="res://.godot/imported/96x96 - ClusterExplosionFrame7.png-3af521ce54af28ca1184ad34b4ac283f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/enemies/ui_sprites/empty_bar.png"
-dest_files=["res://.godot/imported/empty_bar.png-fa98da5821a4cb002fd138818e8ff0ff.ctex"]
+source_file="res://effects/explosion_effect/sprites/96x96 - ClusterExplosionFrame7.png"
+dest_files=["res://.godot/imported/96x96 - ClusterExplosionFrame7.png-3af521ce54af28ca1184ad34b4ac283f.ctex"]
 
 [params]
 

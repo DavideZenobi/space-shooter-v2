@@ -21,3 +21,7 @@ func _physics_process(delta: float) -> void:
 			direction = (player_position - global_position).normalized();
 			if global_position.distance_to(player_position) > 20.0:
 				position += direction * chasing_speed * delta;
+
+func on_die() -> void:
+	
+	super.on_die();

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbvht4ewqmtyv"]
+
+[ext_resource type="Texture2D" uid="uid://511vx3bw3gdv" path="res://ui/enemy_life_bar/sprites/empty_bar.png" id="1_kyyhc"]
+[ext_resource type="Texture2D" uid="uid://bjs5flgups364" path="res://ui/enemy_life_bar/sprites/green_bar.png" id="2_pgo4w"]
+
+[node name="EnemyLifeBar" type="TextureProgressBar"]
+rotation = -1.5708
+scale = Vector2(0.6, 0.45)
+value = 100.0
+texture_under = ExtResource("1_kyyhc")
+texture_progress = ExtResource("2_pgo4w")
