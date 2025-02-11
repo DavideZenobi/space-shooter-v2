@@ -1,6 +1,7 @@
 class_name Player
 extends CharacterBody2D
 
+signal player_shot;
 signal ammo_changed;
 signal player_died;
 signal player_hitted;
@@ -65,6 +66,8 @@ func shoot() -> void:
 	get_tree().root.add_child(bullet_instance);
 	bullet_instance.global_position = position;
 	bullet_instance.rotation = rotation;
+	
+	player_shot.emit();
 	
 	## Ammo stuff
 	time_since_last_shoot = fire_rate;

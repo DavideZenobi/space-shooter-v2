@@ -28,5 +28,8 @@ func _on_fade_in_finished():
 	Logger.print_log("Fade in finished");
 	pre_start();
 
+func _on_player_death():
+	ScenesManager.change_scene(Enums.Levels.GAME_OVER_MENU);
+
 func pre_start():
 	level_intro_countdown_ui.start();

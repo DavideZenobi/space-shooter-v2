@@ -3,6 +3,7 @@ class_name ScenesDatabase
 static var levels: Dictionary = {
 	Enums.Levels.HOME_MENU: "res://levels/home_menu/home_menu.tscn",
 	Enums.Levels.LEVEL: "res://levels/level.tscn",
+	Enums.Levels.GAME_OVER_MENU: "res://levels/game_over_menu/game_over_menu.tscn",
 }
 
 static var player: String = "res://entities/player/player.tscn";

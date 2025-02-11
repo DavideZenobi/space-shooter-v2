@@ -14,6 +14,7 @@ enum Entities {
 enum Levels {
 	STARTER,
 	HOME_MENU,
+	GAME_OVER_MENU,
 	LEVEL, ## Experimental
 	LEVEL_1,
 	LEVEL_2,

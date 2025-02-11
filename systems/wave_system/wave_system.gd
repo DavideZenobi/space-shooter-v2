@@ -8,11 +8,9 @@ var current_wave: int;
 
 @onready var new_wave: Timer = $NewWave;
 
-func set_data(new_total_waves: int):
-	total_waves = new_total_waves;
-
-
-
+func start():
+	
+	pass;
 
 func _on_new_wave_timeout():
 	## TODO
