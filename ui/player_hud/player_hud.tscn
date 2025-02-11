@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://eseg0bf6r7hh"]
+
+[ext_resource type="Texture2D" uid="uid://b7rj1dggcpvtb" path="res://ui/player_hud/sprites/empty_bar.png" id="1_51q42"]
+[ext_resource type="Script" path="res://ui/player_hud/player_hud.gd" id="1_ovh2r"]
+[ext_resource type="Texture2D" uid="uid://6f1v8nuk3hhx" path="res://ui/player_hud/sprites/green_bar.png" id="2_ak7kq"]
+
+[node name="PlayerHud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ovh2r")
+
+[node name="LifeBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 32.0
+value = 100.0
+texture_under = ExtResource("1_51q42")
+texture_progress = ExtResource("2_ak7kq")
+
+[node name="AmmoBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
