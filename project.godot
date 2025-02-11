@@ -23,6 +23,7 @@ TransitionScreen="*res://common/transition/transition_screen.tscn"
 Config="*res://singletons/config.gd"
 PlayerReference="*res://singletons/player_reference.gd"
 DataRecord="*res://singletons/data_record.gd"
+SignalBus="*res://singletons/signal_bus.gd"
 
 [display]
 

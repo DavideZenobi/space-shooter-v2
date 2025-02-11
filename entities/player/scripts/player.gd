@@ -67,13 +67,14 @@ func shoot() -> void:
 	bullet_instance.global_position = position;
 	bullet_instance.rotation = rotation;
 	
-	player_shot.emit();
-	
 	## Ammo stuff
 	time_since_last_shoot = fire_rate;
 	current_ammo -= 1;
 	reload_cooldown.start();
 	reload.stop();
+	
+	SignalBus.emit_player_shot();
+	SignalBus.emit_update_player_ammo();
 
 func get_movement_input() -> Vector2:
 	var direction = Vector2.ZERO;
