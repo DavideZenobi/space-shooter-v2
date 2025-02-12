@@ -22,6 +22,7 @@ func change_state(new_state: Enums.LevelPhases):
 
 ## Intro countdown finished
 func _on_intro_countdown_finished():
+	SignalBus.emit_level_started();
 	change_state(Enums.LevelPhases.ONGOING);
 	start();
 

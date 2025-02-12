@@ -7,11 +7,11 @@ extends CharacterBody2D
 @export var fire_rate: float = 0.08;
 @export var max_ammo: int = 30;
 
+var can_move: bool = false;
+var can_shoot: bool = false;
 var current_health: int = max_health;
-
 var time_since_last_shoot: float = 0.0;
 var current_ammo: int = max_ammo;
-
 var state: Enums.PlayerStates = Enums.PlayerStates.NORMAL;
 
 var screen_size: Vector2;
@@ -25,32 +25,36 @@ func _ready() -> void:
 	PlayerReference.set_player(self);
 	look_at(Vector2.UP);
 	screen_size = get_viewport_rect().size;
+	SignalBus.connect("level_started", Callable(self, "update_freeze"));
 
 func _physics_process(delta) -> void:
-	## Look at / rotation
-	var mouse_position = get_global_mouse_position();
-	look_at(mouse_position);
-	
-	## Direction and movement
-	var new_direction = get_movement_input();
-	velocity = Vector2(new_direction.x * speed, new_direction.y * speed);
-	move_and_slide();
-	
-	## Dash TODO
-	if Input.is_action_just_pressed("dash"):
+	if can_move:
+		## Look at / rotation
+		var mouse_position = get_global_mouse_position();
+		look_at(mouse_position);
 		
-		pass;
+		## Direction and movement
+		var new_direction = get_movement_input();
+		velocity = Vector2(new_direction.x * speed, new_direction.y * speed);
+		move_and_slide();
+		
+		## Dash TODO
+		if Input.is_action_just_pressed("dash") and new_direction != Vector2.ZERO:
+			
+			pass;
+		
+		## Screen limits
+		position.x = clamp(position.x, 0 + 50, screen_size.x - 50);
+		position.y = clamp(position.y, 0 + 50, screen_size.y - 50);
 	
-	## Screen limits
-	position.x = clamp(position.x, 0 + 50, screen_size.x - 50);
-	position.y = clamp(position.y, 0 + 50, screen_size.y - 50);
+	if can_shoot:
+		## Shoot
+		if Input.is_action_pressed("shoot") and time_since_last_shoot <= 0 and current_ammo > 0:
+			shoot();
+		
+		if time_since_last_shoot > 0:
+			time_since_last_shoot = clamp(time_since_last_shoot - delta, 0, fire_rate);
 	
-	## Shoot
-	if Input.is_action_pressed("shoot") and time_since_last_shoot <= 0 and current_ammo > 0:
-		shoot();
-	
-	if time_since_last_shoot > 0:
-		time_since_last_shoot = clamp(time_since_last_shoot - delta, 0, fire_rate);
 
 func shoot() -> void:
 	## Bullet spawn
@@ -101,6 +105,10 @@ func heal(amount: int) -> void:
 	current_health += amount;
 	if current_health > max_health:
 		current_health = max_health;
+
+func update_freeze() -> void:
+	can_move = !can_move;
+	can_shoot = !can_shoot;
 
 func _start_reloading() -> void:
 	reload.start();
