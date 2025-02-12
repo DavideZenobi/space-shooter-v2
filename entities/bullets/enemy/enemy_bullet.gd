@@ -8,7 +8,6 @@ var type: Enums.EnemyBullets;
 var has_collided: bool = false;
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
-	print("collid");
 	if has_collided:
 		return;
 	
@@ -19,7 +18,6 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 	
 	has_collided = true;
 	queue_free();
-	return;
 
 func _on_screen_exited() -> void:
 	queue_free();

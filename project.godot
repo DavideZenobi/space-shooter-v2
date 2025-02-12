@@ -29,6 +29,7 @@ SignalBus="*res://singletons/signal_bus.gd"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+mouse_cursor/custom_image="res://common/cursor/tile_0057.png"
 
 [dotnet]
 
@@ -77,3 +78,4 @@ dash={
 2d_physics/layer_2="player_bullets"
 2d_physics/layer_3="enemies"
 2d_physics/layer_4="enemies_bullets"
+2d_physics/layer_5="asteroids"

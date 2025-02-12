@@ -1,19 +1,26 @@
-[gd_scene load_steps=6 format=3 uid="uid://yb7jylj0esa7"]
+[gd_scene load_steps=8 format=3 uid="uid://yb7jylj0esa7"]
 
 [ext_resource type="Script" path="res://levels/level_controller.gd" id="1_evlvg"]
 [ext_resource type="PackedScene" uid="uid://32g37gejm625" path="res://common/backgrounds/background.tscn" id="1_ljsm3"]
 [ext_resource type="PackedScene" uid="uid://d2ykcsrmeno5t" path="res://entities/player/player.tscn" id="2_ihpki"]
+[ext_resource type="PackedScene" uid="uid://eseg0bf6r7hh" path="res://ui/player_hud/player_hud.tscn" id="3_0vijs"]
 [ext_resource type="PackedScene" uid="uid://d4ktm51ps3yom" path="res://ui/level_intro_countdown_ui/level_intro_countdown_ui.tscn" id="4_ap0oa"]
 [ext_resource type="PackedScene" uid="uid://bbcqd5g74d3jj" path="res://systems/random_enemy_system/randomEnemySystem.tscn" id="5_lbxl2"]
+[ext_resource type="PackedScene" uid="uid://bavl2ftcyf4oy" path="res://systems/asteroid_spawn_system/asteroid_spawn_system.tscn" id="7_51oek"]
 
 [node name="Level" type="Node"]
 script = ExtResource("1_evlvg")
 
 [node name="Background" parent="." instance=ExtResource("1_ljsm3")]
 
-[node name="Player" parent="." instance=ExtResource("2_ihpki")]
-position = Vector2(925, 976)
+[node name="PlayerHud" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_0vijs")]
+player = NodePath("../Player")
 
 [node name="LevelIntroCountdownUi" parent="." instance=ExtResource("4_ap0oa")]
 
+[node name="Player" parent="." instance=ExtResource("2_ihpki")]
+position = Vector2(925, 976)
+
 [node name="RandomEnemySystem" parent="." instance=ExtResource("5_lbxl2")]
+
+[node name="AsteroidSpawnSystem" parent="." instance=ExtResource("7_51oek")]

@@ -7,7 +7,7 @@ var enemies_killcount: int = 0;
 var accuracy: float;
 
 func _ready() -> void:
-	connect("player_shot", Callable(self, "_on_player_shot_fired"));
+	pass;
 
 func _on_player_shot_fired() -> void:
 	player_shots_fired += 1;

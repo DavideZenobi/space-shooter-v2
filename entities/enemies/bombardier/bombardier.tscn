@@ -10,7 +10,7 @@ size = Vector2(80, 84)
 [node name="Bombardier" type="Node2D"]
 script = ExtResource("1_ktokq")
 max_health = 50
-body_damage = 10
+body_damage = -10
 current_bullet = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

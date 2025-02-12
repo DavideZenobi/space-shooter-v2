@@ -1,21 +1,16 @@
 class_name Player
 extends CharacterBody2D
 
-signal player_shot;
-signal ammo_changed;
-signal player_died;
-signal player_hitted;
-
 @export var max_health: int = 50;
 @export var speed: int = 800;
 @export var current_bullet: Enums.PlayerBullets;
 @export var fire_rate: float = 0.08;
 @export var max_ammo: int = 30;
 
-var current_health: int;
+var current_health: int = max_health;
 
 var time_since_last_shoot: float = 0.0;
-var current_ammo: int;
+var current_ammo: int = max_ammo;
 
 var state: Enums.PlayerStates = Enums.PlayerStates.NORMAL;
 
@@ -30,8 +25,6 @@ func _ready() -> void:
 	PlayerReference.set_player(self);
 	look_at(Vector2.UP);
 	screen_size = get_viewport_rect().size;
-	current_ammo = max_ammo;
-	current_health = max_health;
 
 func _physics_process(delta) -> void:
 	## Look at / rotation
@@ -95,14 +88,13 @@ func hitted(attack: Attack) -> void:
 		return;
 	
 	damage(attack.damage);
-	player_hitted.emit();
+	SignalBus.emit_player_hitted();
 	state = Enums.PlayerStates.INVINCIBLE;
 	invincible.start();
 
 func damage(amount: int) -> void:
 	current_health += amount;
 	if current_health <= 0:
-		player_died.emit();
 		queue_free();
 
 func heal(amount: int) -> void:
@@ -117,7 +109,7 @@ func _reload_ammo() -> void:
 	current_ammo += 1;
 	if current_ammo == max_ammo:
 		reload.stop();
-	ammo_changed.emit();
+	SignalBus.emit_update_player_ammo();
 
 
 func _on_invincible_timeout() -> void:

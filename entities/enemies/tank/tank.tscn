@@ -11,6 +11,7 @@ size = Vector2(72, 76)
 script = ExtResource("1_i10d2")
 chasing_speed = 400
 max_health = 80
+body_damage = -10
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = -1.5708

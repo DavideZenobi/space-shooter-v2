@@ -3,6 +3,9 @@ extends Sprite2D
 @onready var blink_interval: Timer = $BlinkInterval;
 @onready var blink_duration: Timer = $BlinkDuration;
 
+func _ready() -> void:
+	SignalBus.connect("player_hitted", Callable(self, "_on_taken_damage"));
+
 func _on_taken_damage():
 	blink_duration.start();
 	blink_interval.start();

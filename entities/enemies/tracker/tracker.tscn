@@ -10,7 +10,7 @@ size = Vector2(72, 84)
 [node name="Tracker" type="Node2D" groups=["enemies"]]
 script = ExtResource("1_oolgb")
 max_health = 40
-body_damage = 5
+body_damage = -5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = -1.5708

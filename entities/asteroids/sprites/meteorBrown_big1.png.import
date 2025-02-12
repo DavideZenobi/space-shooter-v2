@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6f1v8nuk3hhx"
-path="res://.godot/imported/green_bar.png-629001ede50ab2affed843a90b434d54.ctex"
+uid="uid://cetk6v4nok5qa"
+path="res://.godot/imported/meteorBrown_big1.png-55ae6a59fd2f5230ccde3a31b59ec443.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/player_hud/sprites/green_bar.png"
-dest_files=["res://.godot/imported/green_bar.png-629001ede50ab2affed843a90b434d54.ctex"]
+source_file="res://entities/asteroids/sprites/meteorBrown_big1.png"
+dest_files=["res://.godot/imported/meteorBrown_big1.png-55ae6a59fd2f5230ccde3a31b59ec443.ctex"]
 
 [params]
 

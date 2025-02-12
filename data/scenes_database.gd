@@ -26,3 +26,5 @@ static var enemy_bullets: Dictionary = {
 }
 
 static var enemy_death_effect = "res://effects/explosion_effect/explosion_effect.tscn";
+
+static var asteroid = "res://entities/asteroids/asteroid.tscn";

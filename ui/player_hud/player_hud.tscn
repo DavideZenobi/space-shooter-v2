@@ -1,8 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://eseg0bf6r7hh"]
+[gd_scene load_steps=8 format=3 uid="uid://eseg0bf6r7hh"]
 
 [ext_resource type="Texture2D" uid="uid://b7rj1dggcpvtb" path="res://ui/player_hud/sprites/empty_bar.png" id="1_51q42"]
 [ext_resource type="Script" path="res://ui/player_hud/player_hud.gd" id="1_ovh2r"]
-[ext_resource type="Texture2D" uid="uid://6f1v8nuk3hhx" path="res://ui/player_hud/sprites/green_bar.png" id="2_ak7kq"]
+[ext_resource type="Texture2D" uid="uid://6f1v8nuk3hhx" path="res://ui/player_hud/sprites/life_green_bar.png" id="2_ak7kq"]
+[ext_resource type="FontFile" uid="uid://bmpjt0x8p3wdn" path="res://fonts/Orbitron-VariableFont_wght.ttf" id="4_k2fqu"]
+[ext_resource type="Texture2D" uid="uid://sjdgegryfd0s" path="res://ui/player_hud/sprites/ammo_blue_bar.png" id="5_6a1j3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kgxfn"]
+font = ExtResource("4_k2fqu")
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lfv5q"]
+font = ExtResource("4_k2fqu")
+font_color = Color(0, 0, 0, 1)
 
 [node name="PlayerHud" type="Control"]
 layout_mode = 3
@@ -21,7 +31,42 @@ value = 100.0
 texture_under = ExtResource("1_51q42")
 texture_progress = ExtResource("2_ak7kq")
 
+[node name="LifeText" type="Label" parent="LifeBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_kgxfn")
+
 [node name="AmmoBar" type="TextureProgressBar" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 1.0
+offset_top = 42.0
+offset_right = 193.0
+offset_bottom = 74.0
+value = 100.0
+texture_under = ExtResource("1_51q42")
+texture_progress = ExtResource("5_6a1j3")
+
+[node name="AmmoText" type="Label" parent="AmmoBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_lfv5q")

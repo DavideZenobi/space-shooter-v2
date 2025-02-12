@@ -105,6 +105,7 @@ enum BulletStates {
 enum DamageTypes {
 	BULLET,
 	BODY,
+	ASTEROID,
 }
 
 enum EnemyDeathEffects {

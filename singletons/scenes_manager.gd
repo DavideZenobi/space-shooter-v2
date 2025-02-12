@@ -9,6 +9,7 @@ var player_bullets_scenes: Dictionary;
 var enemies_scenes: Dictionary;
 var enemies_bullets_scenes: Dictionary;
 var enemy_death_effect: PackedScene;
+var asteroid: PackedScene;
 
 var previous_scene: Enums.Levels;
 var current_scene: Enums.Levels;
@@ -52,6 +53,9 @@ func preload_scenes() -> void:
 	
 	## Enemy death effect
 	enemy_death_effect = load(ScenesDatabase.enemy_death_effect);
+	
+	## Asteroid
+	asteroid = load(ScenesDatabase.asteroid);
 	
 	scene_loading_finished.emit();
 

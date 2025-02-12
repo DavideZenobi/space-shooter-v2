@@ -4,6 +4,7 @@ var state: Enums.LevelPhases;
 
 @onready var level_intro_countdown_ui: Control = $LevelIntroCountdownUi;
 @onready var random_enemy_system: RandomEnemySystem = $RandomEnemySystem;
+@onready var asteroid_spawn_system: AsteroidSpawnSystem = $AsteroidSpawnSystem;
 
 func _ready():
 	Logger.print_log("Level 1 started");
@@ -13,6 +14,7 @@ func _ready():
 
 func start():
 	random_enemy_system.initialize();
+	asteroid_spawn_system.start();
 
 
 func change_state(new_state: Enums.LevelPhases):
