@@ -9,6 +9,7 @@ extends CharacterBody2D
 
 var can_move: bool = false;
 var can_shoot: bool = false;
+var can_dash: bool = false;
 var current_health: int = max_health;
 var time_since_last_shoot: float = 0.0;
 var current_ammo: int = max_ammo;
@@ -16,6 +17,7 @@ var state: Enums.PlayerStates = Enums.PlayerStates.NORMAL;
 
 var screen_size: Vector2;
 
+@onready var hitbox: Area2D = $Hitbox;
 @onready var bullet_manager: Marker2D = $BulletManager;
 @onready var reload_cooldown: Timer = $ReloadCooldown;
 @onready var reload: Timer = $Reload;
@@ -99,12 +101,17 @@ func hitted(attack: Attack) -> void:
 func damage(amount: int) -> void:
 	current_health += amount;
 	if current_health <= 0:
-		queue_free();
+		handle_death();
 
 func heal(amount: int) -> void:
 	current_health += amount;
 	if current_health > max_health:
 		current_health = max_health;
+
+func handle_death() -> void:
+	visible = false;
+	hitbox.collision_layer = 6; ## layer death
+	SignalBus.emit_player_death();
 
 func update_freeze() -> void:
 	can_move = !can_move;

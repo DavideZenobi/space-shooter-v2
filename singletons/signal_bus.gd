@@ -2,6 +2,7 @@ extends Node
 
 signal player_shot;
 signal player_hitted;
+signal player_death;
 signal update_player_health(health: int);
 signal update_player_ammo(ammo: int);
 signal level_started;
@@ -11,6 +12,9 @@ func emit_player_shot():
 
 func emit_player_hitted():
 	player_hitted.emit();
+
+func emit_player_death():
+	player_death.emit();
 
 func emit_update_player_health():
 	update_player_health.emit();

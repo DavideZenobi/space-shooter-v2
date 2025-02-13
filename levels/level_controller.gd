@@ -10,6 +10,7 @@ func _ready():
 	Logger.print_log("Level 1 started");
 	TransitionScreen.connect("fade_in_finished", Callable(self, "_on_fade_in_finished"));
 	level_intro_countdown_ui.connect("intro_countdown_finished", Callable(self, "_on_intro_countdown_finished"));
+	SignalBus.connect("player_death", Callable(self, "_handle_player_death"));
 	state = Enums.LevelPhases.INTRO;
 
 func start():
@@ -19,6 +20,10 @@ func start():
 
 func change_state(new_state: Enums.LevelPhases):
 	state = new_state;
+
+func _handle_player_death():
+	
+	pass;
 
 ## Intro countdown finished
 func _on_intro_countdown_finished():

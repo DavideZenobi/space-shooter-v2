@@ -1,0 +1,100 @@
+[gd_scene load_steps=7 format=3 uid="uid://1664roloqypn"]
+
+[ext_resource type="Script" path="res://common/game_over_layer/game_over_layer.gd" id="1_sk0uy"]
+[ext_resource type="FontFile" uid="uid://bmpjt0x8p3wdn" path="res://fonts/Orbitron-VariableFont_wght.ttf" id="2_0xccx"]
+
+[sub_resource type="Animation" id="Animation_x7bgx"]
+resource_name = "game_over_in"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.596078, 0.596078, 0.596078, 0), Color(0.505882, 0.505882, 0.505882, 0.513726)]
+}
+
+[sub_resource type="Animation" id="Animation_mfayg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.596078, 0.596078, 0.596078, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7o15n"]
+_data = {
+"RESET": SubResource("Animation_mfayg"),
+"game_over_in": SubResource("Animation_x7bgx")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_wxlwn"]
+font = ExtResource("2_0xccx")
+font_size = 64
+
+[node name="GameOverLayer" type="CanvasLayer"]
+script = ExtResource("1_sk0uy")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.596078, 0.596078, 0.596078, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7o15n")
+}
+
+[node name="GameOverMenu" type="Control" parent="."]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="GameOverMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 150
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 150
+theme_override_constants/margin_bottom = 150
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverMenu/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GameOverMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_wxlwn")
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="GameOverMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Click me!
+"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
+[connection signal="pressed" from="GameOverMenu/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

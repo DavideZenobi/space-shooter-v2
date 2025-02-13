@@ -1,6 +1,6 @@
 extends Node2D
 
-var body_damage: int = 20;
+var body_damage: int = -20;
 var direction: Vector2 = Vector2.DOWN;
 var speed: int;
 var rotational_speed: float;
