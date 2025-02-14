@@ -27,7 +27,7 @@ func _ready() -> void:
 	PlayerReference.set_player(self);
 	look_at(Vector2.UP);
 	screen_size = get_viewport_rect().size;
-	SignalBus.connect("level_started", Callable(self, "update_freeze"));
+	SignalBus.connect("level_started", Callable(self, "unfreeze"));
 
 func _physics_process(delta) -> void:
 	if can_move:
@@ -62,7 +62,7 @@ func shoot() -> void:
 	## Bullet spawn
 	var bullet_instance = BulletFactory.create_player_bullet(current_bullet);
 	bullet_instance.initialize(current_bullet);
-	get_tree().root.add_child(bullet_instance);
+	get_tree().current_scene.add_child(bullet_instance);
 	bullet_instance.global_position = position;
 	bullet_instance.rotation = rotation;
 	
@@ -110,12 +110,19 @@ func heal(amount: int) -> void:
 
 func handle_death() -> void:
 	visible = false;
+	freeze();
 	hitbox.collision_layer = 6; ## layer death
 	SignalBus.emit_player_death();
 
-func update_freeze() -> void:
-	can_move = !can_move;
-	can_shoot = !can_shoot;
+func freeze() -> void:
+	can_move = false;
+	can_shoot = false;
+	can_dash = false;
+
+func unfreeze() -> void:
+	can_move = true;
+	can_shoot = true;
+	can_dash = true;
 
 func _start_reloading() -> void:
 	reload.start();

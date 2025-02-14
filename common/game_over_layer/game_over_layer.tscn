@@ -1,7 +1,22 @@
-[gd_scene load_steps=7 format=3 uid="uid://1664roloqypn"]
+[gd_scene load_steps=10 format=3 uid="uid://1664roloqypn"]
 
 [ext_resource type="Script" path="res://common/game_over_layer/game_over_layer.gd" id="1_sk0uy"]
 [ext_resource type="FontFile" uid="uid://bmpjt0x8p3wdn" path="res://fonts/Orbitron-VariableFont_wght.ttf" id="2_0xccx"]
+
+[sub_resource type="Animation" id="Animation_mfayg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.596078, 0.596078, 0.596078, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_x7bgx"]
 resource_name = "game_over_in"
@@ -19,21 +34,6 @@ tracks/0/keys = {
 "values": [Color(0.596078, 0.596078, 0.596078, 0), Color(0.505882, 0.505882, 0.505882, 0.513726)]
 }
 
-[sub_resource type="Animation" id="Animation_mfayg"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.596078, 0.596078, 0.596078, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7o15n"]
 _data = {
 "RESET": SubResource("Animation_mfayg"),
@@ -43,6 +43,18 @@ _data = {
 [sub_resource type="LabelSettings" id="LabelSettings_wxlwn"]
 font = ExtResource("2_0xccx")
 font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_i885h"]
+font = ExtResource("2_0xccx")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_wu5lv"]
+font = ExtResource("2_0xccx")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_7yai3"]
+font = ExtResource("2_0xccx")
+font_size = 32
 
 [node name="GameOverLayer" type="CanvasLayer"]
 script = ExtResource("1_sk0uy")
@@ -62,7 +74,6 @@ libraries = {
 
 [node name="GameOverMenu" type="Control" parent="."]
 process_mode = 2
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -84,17 +95,63 @@ theme_override_constants/margin_bottom = 150
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GameOverMenu/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 40
 
-[node name="Label" type="Label" parent="GameOverMenu/MarginContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="GameOverMenu/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Game Over"
 label_settings = SubResource("LabelSettings_wxlwn")
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="GameOverMenu/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="GameOverMenu/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Click me!
-"
+size_flags_horizontal = 4
+text = "Shots fired: "
+label_settings = SubResource("LabelSettings_i885h")
+
+[node name="Label2" type="Label" parent="GameOverMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Shots hitted: "
+label_settings = SubResource("LabelSettings_wu5lv")
+
+[node name="Label3" type="Label" parent="GameOverMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Accuracy: "
+label_settings = SubResource("LabelSettings_7yai3")
+
+[node name="Label4" type="Label" parent="GameOverMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Enemies killed: "
+label_settings = SubResource("LabelSettings_7yai3")
+
+[node name="Label5" type="Label" parent="GameOverMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Time: "
+label_settings = SubResource("LabelSettings_7yai3")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameOverMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MainMenuButton" type="Button" parent="GameOverMenu/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("2_0xccx")
+theme_override_font_sizes/font_size = 32
+text = "Main Menu"
+
+[node name="RestartButton" type="Button" parent="GameOverMenu/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("2_0xccx")
+theme_override_font_sizes/font_size = 32
+text = "Restart"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
-[connection signal="pressed" from="GameOverMenu/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="GameOverMenu/MarginContainer/VBoxContainer/HBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="GameOverMenu/MarginContainer/VBoxContainer/HBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]

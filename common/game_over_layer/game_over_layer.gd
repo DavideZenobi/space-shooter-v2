@@ -2,7 +2,8 @@ extends CanvasLayer
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer;
 @onready var game_over_menu: Control = $GameOverMenu;
-@onready var button: Button = $GameOverMenu/MarginContainer/VBoxContainer/Button;
+@onready var main_menu_button: Button = $GameOverMenu/MarginContainer/VBoxContainer/HBoxContainer/MainMenuButton;
+@onready var restart_button: Button = $GameOverMenu/MarginContainer/VBoxContainer/HBoxContainer/RestartButton;
 
 func _ready() -> void:
 	SignalBus.connect("player_death", Callable(self, "_on_player_death"));
@@ -19,3 +20,13 @@ func _on_player_death() -> void:
 
 func _on_button_pressed():
 	print("Clicked!!");
+
+
+func _on_main_menu_button_pressed() -> void:
+	get_tree().paused = false;
+	ScenesManager.change_scene(Enums.Levels.HOME_MENU);
+
+
+func _on_restart_button_pressed() -> void:
+	get_tree().paused = false;
+	ScenesManager.change_scene(Enums.Levels.LEVEL);

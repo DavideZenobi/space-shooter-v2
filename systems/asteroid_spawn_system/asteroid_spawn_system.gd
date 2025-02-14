@@ -18,7 +18,7 @@ func spawn_wave() -> void:
 func spawn_asteroid() -> void:
 	var asteroid_scene = ScenesManager.asteroid;
 	var asteroid_instance = asteroid_scene.instantiate();
-	get_tree().root.add_child(asteroid_instance);
+	get_tree().current_scene.add_child(asteroid_instance);
 	asteroid_instance.global_position = get_random_location();
 
 func get_random_location() -> Vector2:
