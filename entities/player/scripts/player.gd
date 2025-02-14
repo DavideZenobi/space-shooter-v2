@@ -93,14 +93,16 @@ func hitted(attack: Attack) -> void:
 	if state == Enums.PlayerStates.INVINCIBLE:
 		return;
 	
+	SignalBus.emit_player_got_hit();
 	damage(attack.damage);
-	SignalBus.emit_player_hitted();
 	state = Enums.PlayerStates.INVINCIBLE;
 	invincible.start();
 
 func damage(amount: int) -> void:
 	current_health += amount;
+	SignalBus.emit_update_player_health();
 	if current_health <= 0:
+		current_health = 0;
 		handle_death();
 
 func heal(amount: int) -> void:

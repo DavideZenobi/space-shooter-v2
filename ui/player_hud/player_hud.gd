@@ -9,7 +9,7 @@ extends Control
 @onready var ammo_text: Label = $AmmoBar/AmmoText;
 
 func _ready() -> void:
-	SignalBus.connect("player_hitted", Callable(self, "update_life"));
+	SignalBus.connect("update_player_health", Callable(self, "update_life"));
 	SignalBus.connect("update_player_ammo", Callable(self, "update_ammo"));
 	life_text.text = str(player.current_health) + " / " + str(player.max_health);
 	ammo_text.text = str(player.current_ammo) + " / " + str(player.max_ammo);

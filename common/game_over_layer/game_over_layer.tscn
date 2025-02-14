@@ -103,31 +103,31 @@ text = "Game Over"
 label_settings = SubResource("LabelSettings_wxlwn")
 horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="GameOverMenu/MarginContainer/VBoxContainer"]
+[node name="ShotsFired" type="Label" parent="GameOverMenu/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Shots fired: "
 label_settings = SubResource("LabelSettings_i885h")
 
-[node name="Label2" type="Label" parent="GameOverMenu/MarginContainer/VBoxContainer"]
+[node name="ShotsHitted" type="Label" parent="GameOverMenu/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Shots hitted: "
 label_settings = SubResource("LabelSettings_wu5lv")
 
-[node name="Label3" type="Label" parent="GameOverMenu/MarginContainer/VBoxContainer"]
+[node name="Accuracy" type="Label" parent="GameOverMenu/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Accuracy: "
 label_settings = SubResource("LabelSettings_7yai3")
 
-[node name="Label4" type="Label" parent="GameOverMenu/MarginContainer/VBoxContainer"]
+[node name="EnemiesKilled" type="Label" parent="GameOverMenu/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Enemies killed: "
 label_settings = SubResource("LabelSettings_7yai3")
 
-[node name="Label5" type="Label" parent="GameOverMenu/MarginContainer/VBoxContainer"]
+[node name="Time" type="Label" parent="GameOverMenu/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Time: "

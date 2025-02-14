@@ -5,6 +5,8 @@ var state: Enums.LevelPhases;
 @onready var level_intro_countdown_ui: Control = $LevelIntroCountdownUi;
 @onready var random_enemy_system: RandomEnemySystem = $RandomEnemySystem;
 @onready var asteroid_spawn_system: AsteroidSpawnSystem = $AsteroidSpawnSystem;
+@onready var game_over_layer: CanvasLayer = $GameOverLayer;
+@onready var data_record: DataRecord = $DataRecord;
 
 func _ready():
 	Logger.print_log("Level 1 started");
@@ -22,8 +24,7 @@ func change_state(new_state: Enums.LevelPhases):
 	state = new_state;
 
 func _handle_player_death():
-	
-	pass;
+	game_over_layer.set_data(data_record.data);
 
 ## Intro countdown finished
 func _on_intro_countdown_finished():

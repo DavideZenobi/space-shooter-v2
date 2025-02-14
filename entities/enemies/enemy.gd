@@ -40,6 +40,7 @@ func change_state(new_state: Enums.EnemyStates) -> void:
 func hitted(attack: Attack) -> void:
 	update_health(attack.damage);
 	update_life_bar();
+	SignalBus.emit_player_hitted();
 
 func update_health(amount: int) -> void:
 	current_health += amount;
@@ -50,8 +51,9 @@ func on_die() -> void:
 	queue_free();
 	var enemy_death_effect_scene = ScenesManager.enemy_death_effect;
 	var enemy_death_effect_instance = enemy_death_effect_scene.instantiate();
-	get_tree().root.add_child(enemy_death_effect_instance);
+	get_tree().current_scene.add_child(enemy_death_effect_instance);
 	enemy_death_effect_instance.global_position = position;
+	SignalBus.emit_enemy_killed();
 
 func _on_hitbox_body_entered(body: Player) -> void:
 	var attack = Attack.new();

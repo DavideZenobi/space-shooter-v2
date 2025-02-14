@@ -9,7 +9,6 @@ script = ExtResource("1_obb16")
 
 [node name="Spawn" type="Timer" parent="."]
 wait_time = 2.0
-one_shot = true
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = ExtResource("2_0xldu")
