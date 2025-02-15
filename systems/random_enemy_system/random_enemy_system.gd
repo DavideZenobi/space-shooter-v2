@@ -19,9 +19,9 @@ func set_data():
 func spawn_enemy():
 	var spawn_position: Vector2 = path.get_random_location();
 	var enemy_type: Enums.Enemies = Enums.Enemies.TANK;
-	#var enemy_instance: Enemy = EnemyFactory.create_random_enemy();
+	var enemy_instance: Enemy = EnemyFactory.create_random_enemy();
 	# testing
-	var enemy_instance: Enemy = EnemyFactory.create_enemy(Enums.Enemies.TRACKER);
+	#var enemy_instance: Enemy = EnemyFactory.create_enemy(Enums.Enemies.TRACKER);
 	var target_point: Vector2 = Vector2(randi_range(0 + 50, 1920 - 50), randi_range(0 + 50, 1080 - 50));
 	enemy_instance.set_target_point(target_point);
 	get_tree().current_scene.add_child(enemy_instance);

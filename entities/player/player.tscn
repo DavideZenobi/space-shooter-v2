@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2ykcsrmeno5t"]
+[gd_scene load_steps=7 format=3 uid="uid://d2ykcsrmeno5t"]
 
 [ext_resource type="Script" path="res://entities/player/scripts/player.gd" id="1_rwrbl"]
 [ext_resource type="Texture2D" uid="uid://byyy3e3hs6ygu" path="res://entities/player/sprites/playerShip1_blue.png" id="2_6ycr7"]
 [ext_resource type="Script" path="res://entities/player/scripts/style_controller.gd" id="3_tw6pg"]
+[ext_resource type="Script" path="res://entities/player/scripts/audio.gd" id="4_7fnr2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8kmbh"]
 radius = 37.0
@@ -38,6 +39,9 @@ shape = SubResource("CapsuleShape2D_ax0qx")
 
 [node name="BulletManager" type="Marker2D" parent="."]
 position = Vector2(38, 0)
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource("4_7fnr2")
 
 [node name="ReloadCooldown" type="Timer" parent="."]
 one_shot = true

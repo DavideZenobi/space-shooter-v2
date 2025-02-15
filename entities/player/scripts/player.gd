@@ -19,6 +19,7 @@ var screen_size: Vector2;
 
 @onready var hitbox: Area2D = $Hitbox;
 @onready var bullet_manager: Marker2D = $BulletManager;
+@onready var audio: AudioStreamPlayer2D = $Audio;
 @onready var reload_cooldown: Timer = $ReloadCooldown;
 @onready var reload: Timer = $Reload;
 @onready var invincible: Timer = $Invincible;
@@ -72,6 +73,7 @@ func shoot() -> void:
 	reload_cooldown.start();
 	reload.stop();
 	
+	audio.play_by_event(Enums.PlayerEvents.SHOOT);
 	SignalBus.emit_player_shot();
 	SignalBus.emit_update_player_ammo();
 
@@ -93,6 +95,7 @@ func hitted(attack: Attack) -> void:
 	if state == Enums.PlayerStates.INVINCIBLE:
 		return;
 	
+	audio.play_by_event(Enums.PlayerEvents.HITTED);
 	SignalBus.emit_player_got_hit();
 	damage(attack.damage);
 	state = Enums.PlayerStates.INVINCIBLE;
@@ -115,6 +118,7 @@ func handle_death() -> void:
 	freeze();
 	hitbox.collision_layer = 6; ## layer death
 	SignalBus.emit_player_death();
+	audio.play_by_event(Enums.PlayerEvents.DIE);
 
 func freeze() -> void:
 	can_move = false;

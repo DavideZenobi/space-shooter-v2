@@ -22,7 +22,7 @@ func spawn_mini_bombs():
 	for direction in directions:
 		var mini_bomb_instance = BulletFactory.create_enemy_bullet(Enums.EnemyBullets.MINI_BOMB);
 		mini_bomb_instance.set_direction(direction);
-		get_tree().root.add_child(mini_bomb_instance);
+		get_tree().current_scene.add_child(mini_bomb_instance);
 		mini_bomb_instance.global_position = position;
 
 func _on_explode_timeout():

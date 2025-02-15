@@ -4,6 +4,7 @@ func _ready():
 	Logger.print_log("Starter scene started");
 	
 	ScenesManager.connect("scene_loading_finished", Callable(self, "_on_scene_loading_finished"));
+	AudioManager.preload_audios();
 	ScenesManager.preload_scenes();
 
 func _on_scene_loading_finished():

@@ -16,6 +16,7 @@ func _ready():
 	state = Enums.LevelPhases.INTRO;
 
 func start():
+	SignalBus.emit_level_started();
 	random_enemy_system.initialize();
 	asteroid_spawn_system.start();
 
@@ -28,7 +29,6 @@ func _handle_player_death():
 
 ## Intro countdown finished
 func _on_intro_countdown_finished():
-	SignalBus.emit_level_started();
 	change_state(Enums.LevelPhases.ONGOING);
 	start();
 
