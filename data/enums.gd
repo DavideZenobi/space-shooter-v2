@@ -111,3 +111,9 @@ enum DamageTypes {
 enum EnemyDeathEffects {
 	EXPLOSION1,
 }
+
+enum ItemEffects {
+	HEALING,
+	WEAPONG,
+	GAME_STATUS,
+}
