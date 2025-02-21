@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://oeafltwbcnhs"]
+
+[ext_resource type="Script" path="res://systems/drop_system/drop_system.gd" id="1_qsh0r"]
+
+[node name="DropSystem" type="Node"]
+script = ExtResource("1_qsh0r")
