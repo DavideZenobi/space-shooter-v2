@@ -24,6 +24,7 @@ Config="*res://singletons/config.gd"
 PlayerReference="*res://singletons/player_reference.gd"
 SignalBus="*res://singletons/signal_bus.gd"
 GlobalVariables="*res://singletons/global_variables.gd"
+CameraReference="*res://singletons/camera_reference.gd"
 
 [display]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://yb7jylj0esa7"]
+[gd_scene load_steps=11 format=3 uid="uid://yb7jylj0esa7"]
 
 [ext_resource type="Script" path="res://levels/level_controller.gd" id="1_evlvg"]
 [ext_resource type="PackedScene" uid="uid://32g37gejm625" path="res://common/backgrounds/background.tscn" id="1_ljsm3"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bavl2ftcyf4oy" path="res://systems/asteroid_spawn_system/asteroid_spawn_system.tscn" id="7_51oek"]
 [ext_resource type="PackedScene" uid="uid://1664roloqypn" path="res://common/game_over_layer/game_over_layer.tscn" id="8_dpugh"]
 [ext_resource type="PackedScene" uid="uid://bfcsexoxqe0sl" path="res://systems/data_record/data_record.tscn" id="9_5gbjj"]
+[ext_resource type="PackedScene" uid="uid://bh471bqsqqser" path="res://common/camera/camera.tscn" id="10_pkwau"]
 
 [node name="Level" type="Node"]
 script = ExtResource("1_evlvg")
@@ -30,3 +31,5 @@ position = Vector2(925, 976)
 [node name="AsteroidSpawnSystem" parent="." instance=ExtResource("7_51oek")]
 
 [node name="DataRecord" parent="." instance=ExtResource("9_5gbjj")]
+
+[node name="Camera" parent="." instance=ExtResource("10_pkwau")]
