@@ -7,7 +7,7 @@ signal player_death;
 signal update_player_health(health: int);
 signal update_player_ammo(ammo: int);
 signal level_started;
-signal enemy_killed;
+signal enemy_killed(position: Vector2);
 
 func emit_player_shot():
 	player_shot.emit();
@@ -30,5 +30,5 @@ func emit_update_player_ammo():
 func emit_level_started():
 	level_started.emit();
 
-func emit_enemy_killed():
-	enemy_killed.emit();
+func emit_enemy_killed(position: Vector2):
+	enemy_killed.emit(position);

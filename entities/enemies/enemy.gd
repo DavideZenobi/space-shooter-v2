@@ -53,7 +53,7 @@ func on_die() -> void:
 	var enemy_death_effect_instance = enemy_death_effect_scene.instantiate();
 	get_tree().current_scene.add_child(enemy_death_effect_instance);
 	enemy_death_effect_instance.global_position = position;
-	SignalBus.emit_enemy_killed();
+	SignalBus.emit_enemy_killed(position);
 
 func _on_hitbox_body_entered(body: Player) -> void:
 	var attack = Attack.new();

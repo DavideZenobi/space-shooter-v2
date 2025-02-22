@@ -6,6 +6,9 @@ extends Node
 func _ready() -> void:
 	SignalBus.connect("enemy_killed", Callable(self, "_on_enemy_killed"));
 
-func _on_enemy_killed() -> void:
+func _on_enemy_killed(enemy_position: Vector2) -> void:
 	if randi_range(1, 100) < drop_chance:
-		print("Item dropped!");
+		spawn_item(enemy_position)
+
+func spawn_item(spawn_position: Vector2) -> void:
+	pass;

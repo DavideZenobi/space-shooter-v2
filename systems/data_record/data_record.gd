@@ -14,7 +14,8 @@ func add_player_shots_fired() -> void:
 func add_player_shots_hitted() -> void:
 	data.player_shots_hitted += 1;
 
-func add_enemies_killed() -> void:
+## Argument not used but needed
+func add_enemies_killed(_position: Vector2) -> void:
 	data.enemies_killed += 1;
 
 func get_data() -> DataTemplate:
