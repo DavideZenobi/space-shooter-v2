@@ -41,6 +41,7 @@ shape = SubResource("CapsuleShape2D_ax0qx")
 position = Vector2(38, 0)
 
 [node name="Audio" type="AudioStreamPlayer2D" parent="."]
+bus = &"Effects"
 script = ExtResource("4_7fnr2")
 
 [node name="ReloadCooldown" type="Timer" parent="."]

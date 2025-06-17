@@ -15,6 +15,10 @@ run/main_scene="res://levels/starter/starter.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="res://common/audio/general_audio_bus.tres"
+
 [autoload]
 
 ScenesManager="*res://singletons/scenes_manager.gd"
