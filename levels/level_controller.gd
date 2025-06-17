@@ -7,6 +7,7 @@ var state: Enums.LevelPhases;
 @onready var asteroid_spawn_system: AsteroidSpawnSystem = $AsteroidSpawnSystem;
 @onready var game_over_layer: CanvasLayer = $GameOverLayer;
 @onready var data_record: DataRecord = $DataRecord;
+@onready var pause_layer: CanvasLayer = $PauseLayer
 
 func _ready():
 	Logger.print_log("Level 1 started");
@@ -14,12 +15,13 @@ func _ready():
 	level_intro_countdown_ui.connect("intro_countdown_finished", Callable(self, "_on_intro_countdown_finished"));
 	SignalBus.connect("player_death", Callable(self, "_handle_player_death"));
 	state = Enums.LevelPhases.INTRO;
+	GlobalVariables.is_game_over = false
+	pause_layer.hide()
 
 func start():
 	SignalBus.emit_level_started();
 	random_enemy_system.initialize();
 	asteroid_spawn_system.start();
-
 
 func change_state(new_state: Enums.LevelPhases):
 	state = new_state;

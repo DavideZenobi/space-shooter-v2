@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cdbgn7p6dofta"]
+[gd_scene load_steps=5 format=3 uid="uid://cdbgn7p6dofta"]
 
 [ext_resource type="Script" path="res://levels/home_menu/home_menu.gd" id="1_glvye"]
-[ext_resource type="PackedScene" uid="uid://32g37gejm625" path="res://common/backgrounds/background.tscn" id="2_wt7yw"]
+[ext_resource type="Texture2D" uid="uid://qaaf7qury67r" path="res://common/backgrounds/sprites/title_screen_1920x1080.png" id="2_1k70f"]
+[ext_resource type="Theme" uid="uid://d3jxccthfhp0w" path="res://common/themes/base_theme.tres" id="2_tkics"]
 [ext_resource type="PackedScene" uid="uid://bh471bqsqqser" path="res://common/camera/camera.tscn" id="3_gmhxh"]
 
 [node name="HomeMenu" type="Control"]
@@ -13,21 +14,39 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_glvye")
 
-[node name="Background" parent="." instance=ExtResource("2_wt7yw")]
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_1k70f")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.649
+anchor_top = 0.184
+anchor_right = 0.649
+anchor_bottom = 0.184
+offset_left = 0.47998
+offset_right = 354.48
+offset_bottom = 172.0
+theme = ExtResource("2_tkics")
+theme_override_font_sizes/normal_font_size = 68
+bbcode_enabled = true
+text = "[center]Space Shooter[/center]"
+fit_content = true
+scroll_active = false
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -35.0
-offset_top = -50.5
-offset_right = 35.0
-offset_bottom = 50.5
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = -1
+anchor_left = 0.65
+anchor_top = 0.4
+anchor_right = 0.65
+anchor_bottom = 0.4
+offset_right = 348.04
+offset_bottom = 128.0
+theme = ExtResource("2_tkics")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2

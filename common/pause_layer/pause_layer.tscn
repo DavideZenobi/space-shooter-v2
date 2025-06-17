@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgw1aimhveeqr"]
+
+[ext_resource type="Script" path="res://common/pause_layer/pause_layer.gd" id="1_gmbn7"]
+[ext_resource type="Theme" uid="uid://d3jxccthfhp0w" path="res://common/themes/base_theme.tres" id="2_vqhgr"]
+
+[node name="PauseLayer" type="CanvasLayer"]
+process_mode = 3
+layer = 128
+visible = false
+script = ExtResource("1_gmbn7")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.313726)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.2
+anchor_right = 0.5
+anchor_bottom = 0.2
+offset_left = -66.0
+offset_right = 66.0
+offset_bottom = 42.0
+grow_horizontal = 2
+theme = ExtResource("2_vqhgr")
+text = "PAUSE"
+fit_content = true
+scroll_active = false

@@ -119,6 +119,7 @@ func handle_death() -> void:
 	hitbox.collision_layer = 6; ## layer death
 	SignalBus.emit_player_death();
 	audio.play_by_event(Enums.PlayerEvents.DIE);
+	GlobalVariables.is_game_over = true;
 
 func freeze() -> void:
 	can_move = false;
